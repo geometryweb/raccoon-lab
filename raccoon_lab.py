@@ -22,7 +22,7 @@ def __(mo):
     <html lang="ko">
     <head>
       <meta charset="utf-8">
-      <title>두더지를 잡아라 - 다이아몬드 광산 대소동</title>
+      <title>두더지를 잡아라</title>
       <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 
@@ -576,7 +576,6 @@ def __(mo):
         <div class="top-row">
           <div class="title-group">
             <h1 class="game-title">두더지를 잡아라</h1>
-            <span class="edition-badge">광산 에디션</span>
           </div>
           <button class="guide-btn" onclick="toggleGuide(true)">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
@@ -623,7 +622,7 @@ def __(mo):
             </div>
             <div class="bar-wrap">
               <div class="bar-header">
-                <span>피버 게이지</span>
+                <span>보너스 게이지</span>
                 <span id="ui-fever-pct">0%</span>
               </div>
               <div class="bar-track"><div id="bar-fever" class="fever-fill"></div></div>
@@ -655,17 +654,17 @@ def __(mo):
         <!-- 도감 모달 -->
         <div id="modal-guide" class="modal-layer">
           <div class="modal-card">
-            <h2 style="margin: 0; font-size: 18px; font-weight: 700;">다이아몬드 광산 가이드</h2>
-            <p style="margin: 6px 0 0; font-size: 13px; color: var(--text-secondary);">뽕망치로 두더지를 잡고 피버를 채워 보스를 소탕하세요.</p>
+            <h2 style="margin: 0; font-size: 18px; font-weight: 700;">두더지 게임 가이드</h2>
+            <p style="margin: 6px 0 0; font-size: 13px; color: var(--text-secondary);">뽕망치로 두더지를 잡고 보너스 게이지를 채워 보스를 소탕하세요.</p>
             <div class="guide-grid">
               <div class="guide-item"><strong>일반 두더지</strong><br>+555점</div>
               <div class="guide-item"><strong>보석 두더지</strong><br>+1,500 ~ 4,500점</div>
               <div class="guide-item"><strong>안전모 두더지</strong><br>연속 2회 타격 (+1,000점)</div>
               <div class="guide-item"><strong>시계 두더지</strong><br>3회 타격 (+5,000점, +5초)</div>
               <div class="guide-item"><strong>다이너마이트</strong><br>화면 전체 격파 (+2,000점)</div>
-              <div class="guide-item"><strong>갓파더 보스</strong><br>피버 4단계 연타 보너스</div>
-              <div class="guide-item" style="grid-column: span 2; border-color: rgba(244, 63, 94, 0.35); color: #fda4af;">
-                <strong style="color: #fb7185;">토끼 경관 (주의)</strong><br>타격 시 -10,000점, 피버 초기화 및 잠시 체포
+              <div class="guide-item"><strong>갓파더 보스</strong><br>보너스 4단계 연타 찬스</div>
+              <div class="guide-item" style="grid-column: span 2; border-color: rgba(220, 38, 38, 0.28); background: #fef2f2; color: #b91c1c;">
+                <strong style="color: #dc2626;">토끼 경관 (주의)</strong><br>타격 시 -10,000점, 보너스 게이지 초기화 및 잠시 체포
               </div>
             </div>
             <button class="action-btn" style="padding: 9px 28px; font-size: 14px;" onclick="toggleGuide(false)">확인</button>
@@ -983,7 +982,7 @@ def __(mo):
           const pct = Math.min(100, Math.round((comboCount / COMBO_TARGET) * 100));
           feverBarEl.style.width = pct + '%';
           feverPctEl.textContent = pct + '%';
-          feverTxtEl.textContent = feverStep > 0 ? `FEVER ${feverStep}단계 (${comboCount}/${COMBO_TARGET})` : `콤보 ${comboCount}`;
+          feverTxtEl.textContent = feverStep > 0 ? `보너스 ${feverStep}단계 (${comboCount}/${COMBO_TARGET})` : `콤보 ${comboCount}`;
 
           document.getElementById('star-1').classList.toggle('on', feverStep >= 1);
           document.getElementById('star-2').classList.toggle('on', feverStep >= 2);
@@ -1302,7 +1301,7 @@ def __(mo):
 
           playBtn.disabled = true;
           playBtn.style.opacity = '0.5';
-          playBtn.textContent = '광산 소탕 작전 진행 중...';
+          playBtn.textContent = '게임 진행 중...';
 
           if (mainLoopId) clearInterval(mainLoopId);
           if (spawnLoopId) clearTimeout(spawnLoopId);
